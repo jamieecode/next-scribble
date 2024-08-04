@@ -15,6 +15,13 @@
       "when": 1720938198630,
       "tag": "0001_thick_kid_colt",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1722746947154,
+      "tag": "0002_mixed_sally_floyd",
+      "breakpoints": true
     }
   ]
 }
