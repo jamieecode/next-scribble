@@ -37,6 +37,7 @@ export const emailRegister = action
     await db.insert(users).values({
       email,
       name,
+      password: hashedPassword,
     });
 
     const verificationsToken = await generateEmailVerificationToken(email);
