@@ -57,6 +57,13 @@
       "when": 1723387540077,
       "tag": "0007_acoustic_sway",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1723964412842,
+      "tag": "0008_lowly_mastermind",
+      "breakpoints": true
     }
   ]
 }
