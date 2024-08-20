@@ -15,11 +15,13 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useTheme } from "next-themes";
 import { Switch } from "@/components/ui/switch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const UserButton = ({ user }: Session) => {
   const { setTheme, theme } = useTheme();
   const [checked, setChecked] = useState(false);
+  const router = useRouter();
 
   function setSwitchState() {
     switch (theme) {
@@ -31,6 +33,10 @@ export const UserButton = ({ user }: Session) => {
         return setChecked(false);
     }
   }
+
+  useEffect(() => {
+    setSwitchState();
+  }, []);
 
   if (user)
     return (
@@ -68,7 +74,10 @@ export const UserButton = ({ user }: Session) => {
           </div>
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem className="group py-2 font-medium cursor-pointer transition-all duration-500 ease-in-out">
+          <DropdownMenuItem
+            onClick={() => router.push("/dashboard/orders")}
+            className="group py-2 font-medium cursor-pointer ease-in-out"
+          >
             <TruckIcon
               size={14}
               className="mr-3 group-hover:translate-x-1 transition-all duration-300 ease-in-out"
@@ -76,7 +85,10 @@ export const UserButton = ({ user }: Session) => {
             My orders
           </DropdownMenuItem>
 
-          <DropdownMenuItem className="group py-2 font-medium cursor-pointer transition-all duration-500 ease-in-out">
+          <DropdownMenuItem
+            onClick={() => router.push("/dashboard/settings")}
+            className="group py-2 font-medium cursor-pointer ease-in-out"
+          >
             <Settings
               size={14}
               className="mr-3 group-hover:rotate-180 transition-all duration-300 ease-in-out"
@@ -85,7 +97,7 @@ export const UserButton = ({ user }: Session) => {
           </DropdownMenuItem>
 
           {theme && (
-            <DropdownMenuItem className="py-2 font-medium cursor-pointer transition-all duration-500 ease-in-out">
+            <DropdownMenuItem className="py-2 font-medium cursor-pointer ease-in-out">
               <div
                 onClick={(e) => e.stopPropagation()}
                 className="flex items-center group"
@@ -119,7 +131,7 @@ export const UserButton = ({ user }: Session) => {
 
           <DropdownMenuItem
             onClick={() => signOut()}
-            className="py-2 group focus:bg-destructive/30 font-medium cursor-pointer transition-all duration-500"
+            className="py-2 group focus:bg-destructive/30 font-medium cursor-pointer"
           >
             <LogOut
               size={14}

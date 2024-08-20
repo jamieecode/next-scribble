@@ -7,6 +7,7 @@ import Logo from "./logo";
 
 export default async function Nav() {
   const session = await auth();
+  console.log("nav", session);
 
   return (
     <header className="py-8">
