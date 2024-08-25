@@ -67,3 +67,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+[data-ut-element="button"][data-state="uploading"]::after {
+  @apply bg-primary/50;
+}
