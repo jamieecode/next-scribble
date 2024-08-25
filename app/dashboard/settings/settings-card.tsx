@@ -195,6 +195,8 @@ export default function SettingsCard(session: SettingsForm) {
                         status === "executing" ||
                         session?.session?.user?.isOAuth === true
                       }
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />
