@@ -26,8 +26,9 @@ import { VariantSchema } from "@/types/variant-schema";
 import * as z from "zod";
 import { Input } from "@/components/ui/input";
 import { InputTags } from "./input-tags";
+import VariantImages from "./variant-images";
 
-export default function ProductVariant({
+export const ProductVariant = ({
   editMode,
   productID,
   variant,
@@ -37,7 +38,7 @@ export default function ProductVariant({
   productID?: number;
   variant?: VariantsWithImagesTags;
   children: React.ReactNode;
-}) {
+}) => {
   const form = useForm<z.infer<typeof VariantSchema>>({
     resolver: zodResolver(VariantSchema),
     defaultValues: {
@@ -113,7 +114,7 @@ export default function ProductVariant({
                 </FormItem>
               )}
             />
-            {/* <VariantImages /> */}
+            <VariantImages />
             {editMode && variant && (
               <Button type="button" onClick={(e) => e.preventDefault()}>
                 Delete Varaint
@@ -127,4 +128,4 @@ export default function ProductVariant({
       </DialogContent>
     </Dialog>
   );
-}
+};
