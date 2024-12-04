@@ -11,6 +11,8 @@
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.17.7",
+    "@algolia/client-search": "^5.15.0",
     "@auth/core": "^0.34.2",
     "@auth/drizzle-adapter": "^1.4.2",
     "@hookform/resolvers": "^3.9.0",
@@ -31,6 +33,7 @@
     "@tiptap/starter-kit": "^2.9.1",
     "@types/bcrypt": "^5.0.2",
     "@uploadthing/react": "^6.7.2",
+    "algoliasearch": "^5.15.0",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
