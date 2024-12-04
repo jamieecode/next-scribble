@@ -13,8 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
-import { deleteProduct } from "@/server/actions/delete-product";
 import { useAction } from "next-safe-action/hooks";
+import { deleteProduct } from "@/server/actions/delete-product";
 import { toast } from "sonner";
 import Link from "next/link";
 import { VariantsWithImagesTags } from "@/lib/infer-type";
@@ -41,7 +41,7 @@ const ActionCell = ({ row }: { row: Row<ProductColumn> }) => {
         toast.error(data.data?.error);
       }
       if (data.data?.success) {
-        toast.success(data.data?.success);
+        toast.success(data.data.success);
       }
     },
     onExecute: () => {
@@ -118,7 +118,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
             <Tooltip>
               <TooltipTrigger asChild>
                 <span>
-                  <ProductVariant editMode={false}>
+                  <ProductVariant productID={row.original.id} editMode={false}>
                     <PlusCircle className="h-5 w-5" />
                   </ProductVariant>
                 </span>
@@ -141,7 +141,6 @@ export const columns: ColumnDef<ProductColumn>[] = [
         currency: "USD",
         style: "currency",
       }).format(price);
-
       return <div className="font-medium text-xs">{formatted}</div>;
     },
   },
