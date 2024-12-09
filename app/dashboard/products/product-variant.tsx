@@ -61,8 +61,15 @@ export const ProductVariant = ({
 
   const setEdit = () => {
     if (!editMode) {
-      form.reset();
-      return;
+      form.reset({
+        tags: [],
+        variantImages: [],
+        color: "#000000",
+        editMode: false,
+        id: undefined,
+        productID,
+        productType: "Black Notebook",
+      });
     }
 
     if (editMode && variant) {
@@ -123,8 +130,10 @@ export const ProductVariant = ({
   }
 
   useEffect(() => {
-    setEdit();
-  }, []);
+    if (open) {
+      setEdit();
+    }
+  }, [open, variant]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
