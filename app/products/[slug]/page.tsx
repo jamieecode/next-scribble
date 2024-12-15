@@ -1,6 +1,7 @@
 import ProductPicker from "@/components/products/product-picker";
 import ProductShowcase from "@/components/products/product-showcase";
 import ProductType from "@/components/products/product-type";
+import Reviews from "@/components/reviews/reviews";
 import { Separator } from "@/components/ui/separator";
 import formatPrice from "@/lib/format-price";
 import { db } from "@/server";
@@ -80,6 +81,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </div>
           </div>
         </section>
+
+        <Reviews productID={variant.productID} />
       </main>
     );
   }
