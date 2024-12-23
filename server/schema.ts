@@ -241,29 +241,25 @@ export const ordersRelations = relations(orders, ({ one, many }) => ({
   orderProduct: many(orderProduct, { relationName: "order_product" }),
 }));
 
-export const orderProduct = pgTable("orderProduct", {
+export const orderProduct = pgTable("order_product", {
   id: serial("id").primaryKey(),
   quantity: integer("quantity").notNull(),
   productVariantID: serial("productVariantID")
     .notNull()
-    .references(() => productVariants.id, {
-      onDelete: "cascade",
-    }),
+    .references(() => productVariants.id, { onDelete: "cascade" }),
   productID: serial("productID")
     .notNull()
     .references(() => products.id, { onDelete: "cascade" }),
   orderID: serial("orderID")
     .notNull()
-    .references(() => orders.id, {
-      onDelete: "cascade",
-    }),
+    .references(() => orders.id, { onDelete: "cascade" }),
 });
 
 export const orderProductRelations = relations(orderProduct, ({ one }) => ({
   order: one(orders, {
     fields: [orderProduct.orderID],
     references: [orders.id],
-    relationName: "orderProduct",
+    relationName: "order_product",
   }),
   product: one(products, {
     fields: [orderProduct.productID],
