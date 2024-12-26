@@ -22,6 +22,9 @@ export type CartState = {
   ) => void;
   addToCart: (item: CartItem) => void;
   removeFromCart: (item: CartItem) => void;
+  clearCart: () => void;
+  cartOpen: boolean;
+  setCartOpen: (value: boolean) => void;
 };
 
 export const useCartStore = create<CartState>()(
@@ -29,6 +32,7 @@ export const useCartStore = create<CartState>()(
     (set) => ({
       cart: [],
       checkoutProgress: "cart-page",
+
       setCheckoutProgress: (value) => {
         set((state) => ({ checkoutProgress: value }));
       },
@@ -90,6 +94,12 @@ export const useCartStore = create<CartState>()(
           };
         });
       },
+
+      clearCart: () => set({ cart: [] }),
+
+      cartOpen: false,
+
+      setCartOpen: (value) => set({ cartOpen: value }),
     }),
     { name: "cart-storage" }
   )
