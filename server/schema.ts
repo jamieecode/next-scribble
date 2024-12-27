@@ -6,8 +6,6 @@ import {
   integer,
   boolean,
   pgEnum,
-  unique,
-  PgTable,
   serial,
   real,
   index,

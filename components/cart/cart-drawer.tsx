@@ -4,7 +4,6 @@ import { useCartStore } from "@/lib/client-store";
 import { ShoppingBag } from "lucide-react";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerTrigger,

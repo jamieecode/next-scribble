@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Avatar } from "../ui/avatar";
 import Socials from "./socials";
 import { BackButton } from "./back-button";
 

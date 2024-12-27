@@ -1,5 +1,4 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
-import { UploadThingError } from "uploadthing/server";
 
 const f = createUploadthing();
 
@@ -10,7 +9,7 @@ export const ourFileRouter = {
 
   variantUploader: f({
     image: { maxFileCount: 10, maxFileSize: "4MB" },
-  }).onUploadComplete(async ({ metadata, file }) => {
+  }).onUploadComplete(async ({ file }) => {
     console.log(file);
   }),
 } satisfies FileRouter;
