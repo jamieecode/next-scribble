@@ -11,6 +11,8 @@ import { db } from "@/server";
 import { productVariants } from "@/server/schema";
 import { eq } from "drizzle-orm";
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const data = await db.query.productVariants.findMany({
     with: {

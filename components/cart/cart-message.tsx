@@ -30,7 +30,9 @@ export default function CartMessage() {
             <ArrowLeft size={14} /> Head back to cart{" "}
           </span>
         ) : null}
-        {checkoutProgress === "confirmation-page" ? "Order Confirmed" : null}
+        {checkoutProgress === "confirmation-page"
+          ? "You will receive an email with your receipt!"
+          : null}
       </DrawerDescription>
     </motion.div>
   );

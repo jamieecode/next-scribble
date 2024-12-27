@@ -53,20 +53,19 @@ export default function CartItems() {
       )}
 
       {cart.length > 0 && (
-        <div className="h-88 w-full overflow-y-auto">
+        <div className="max-h-80 w-full overflow-y-auto">
           <Table className="max-w-2xl mx-auto">
             <TableHeader>
               <TableRow>
                 <TableCell>Product</TableCell>
                 <TableCell>Price</TableCell>
-
                 <TableCell>Image</TableCell>
                 <TableCell>Quantity</TableCell>
               </TableRow>
             </TableHeader>
             <TableBody>
               {cart.map((item) => (
-                <TableRow key={item.id}>
+                <TableRow key={(item.id + item.variant.variantID).toString()}>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{formatPrice(item.price)}</TableCell>
                   <TableCell>
