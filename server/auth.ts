@@ -17,6 +17,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   secret: process.env.AUTH_SECRET,
   session: { strategy: "jwt" },
   events: {
+    // @ts-ignore
     createUser: async ({ user }) => {
       const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
         apiVersion: "2024-12-18.acacia",
@@ -34,6 +35,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   callbacks: {
+    // @ts-ignore
     async session({ session, token }) {
       if (session && token.sub) {
         session.user.id = token.sub;
@@ -51,6 +53,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
 
+    // @ts-ignore
     async jwt({ token }) {
       if (!token.sub) return token;
       const existingUser = await db.query.users.findFirst({
