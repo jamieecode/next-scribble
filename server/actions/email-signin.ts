@@ -12,7 +12,6 @@ import {
 } from "./tokens";
 import { sendTwoFactorTokenByEmail, sendVerificationsEmail } from "./email";
 import { signIn } from "../auth";
-import { AuthError } from "next-auth";
 
 const action = createSafeActionClient();
 
@@ -57,7 +56,7 @@ export const emailSignIn = action
           const hasExpired = new Date(twoFactorToken.expires) < new Date();
 
           if (hasExpired) {
-            return { error: " Token has expired" };
+            return { error: "Token has expired" };
           }
 
           await db
@@ -85,15 +84,15 @@ export const emailSignIn = action
     } catch (error) {
       console.log(error);
 
-      if (error instanceof AuthError) {
-        switch (error.type) {
-          case "CredentialsSignin":
+      if (error instanceof Error) {
+        switch (true) {
+          case error.message.includes("CredentialsSignin"):
             return { error: "Incorrect email or password" };
 
-          case "AccessDenied":
+          case error.message.includes("AccessDenied"):
             return { error: error.message };
 
-          case "OAuthSignInError":
+          case error.message.includes("OAuthSignInError"):
             return { error: error.message };
 
           default:
