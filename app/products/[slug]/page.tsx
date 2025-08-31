@@ -10,8 +10,27 @@ import { getReviewAverage } from "@/lib/review-average";
 import { db } from "@/server";
 import { productVariants } from "@/server/schema";
 import { eq } from "drizzle-orm";
+import { Metadata } from "next";
 
 export const revalidate = 60;
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const id = params.slug;
+  const variant = await db.query.productVariants.findFirst({
+    where: eq(productVariants.id, Number(id)),
+    with: {
+      product: true,
+    },
+  });
+  return {
+    title: variant?.product.title,
+    description: variant?.product.description,
+  };
+}
 
 export async function generateStaticParams() {
   const data = await db.query.productVariants.findMany({
