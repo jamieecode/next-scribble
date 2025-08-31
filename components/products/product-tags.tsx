@@ -22,6 +22,12 @@ export default function ProductTags() {
 
   const colors = ["blue", "green", "purple"];
 
+  const colorClasses: Record<string, string> = {
+    blue: "bg-blue-500 hover:bg-blue-600",
+    green: "bg-green-500 hover:bg-green-600",
+    purple: "bg-purple-500 hover:bg-purple-600",
+  };
+
   return (
     <div className="my-4 flex gap-4 items-center justify-center">
       <Badge
@@ -39,12 +45,9 @@ export default function ProductTags() {
           key={color}
           onClick={() => setFilter(color)}
           className={cn(
-            `cursor-pointer hover:bg-${color}-600 hover:opacity-100`,
-            {
-              [`bg-${color}-500`]: true,
-              "opacity-100": tag === color && tag,
-              "opacity-50": !(tag === color && tag),
-            }
+            "cursor-pointer",
+            colorClasses[color],
+            tag === color ? "opacity-100" : "opacity-50"
           )}
         >
           {color}
