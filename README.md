@@ -12,7 +12,8 @@
 - 메인 화면 검색창에는 Algolia Search를 연동하였습니다.<br>Integrated <b>Algolia Search</b> for the main page search bar.</br>
 
 ## 📌 Deploy
-https://next-scribble.store
+~~https://next-scribble.store~~
+(currently unavailable)
 
 ## Getting Started
 
